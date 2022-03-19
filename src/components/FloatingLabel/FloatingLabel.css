@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+#float-label {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 3px;
+  margin-top: 10px;
+}
+
+#float-label input {
+  width: 100%;
+  height: 56px;
+  padding: 20px 16px 0 10px;
+  outline: 0;
+  border: 5px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  color: #000;
+}
+
+#float-label label {
+  margin-top: -6px;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  padding: 0 12px;
+  color: #999;
+  pointer-events: none;
+  position: absolute;
+  transform: translate(0, 26px) scale(1);
+  transform-origin: top left;
+  transition: all 0.2s ease-out;
+  font-weight: bold;
+  color: #17a2b8;
+}
+
+#float-label:focus-within label {
+  transform: translate(0, 12px) scale(0.75);
+}
+
+#float-label:focus-within input {
+  box-shadow: 0 0 0 0.25rem #17a2b8;
+  border: 0px solid;
+}
+
+#float-label .Active {
+  transform: translate(0, 12px) scale(0.75);
+}
