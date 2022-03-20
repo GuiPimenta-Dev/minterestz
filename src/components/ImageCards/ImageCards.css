@@ -1,0 +1,54 @@
+.mainContainer {
+  margin: 10% 20px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.cardPhoto {
+  padding: 10px;
+  min-height: 400px;
+  max-height: 400px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 500ms ease;
+  justify-content: space-between;
+  overflow: hidden;
+  background-color: rgb(228, 227, 227);
+  border-radius: 10px;
+  border: none;
+}
+
+.cardPhoto:hover {
+  background-color: white;
+}
+
+.cardPhoto:hover .cardImg {
+  transform: scale(1.05);
+}
+
+.cardImgContainer {
+  height: 80%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.cardImg {
+  opacity: 1;
+  transition: all 300ms ease;
+  height: 100%;
+}
+
+.cardTitle {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 30px;
+  font-weight: 600;
+}
+.cardDescription {
+  text-transform: capitalize;
+  font-size: 20px;
+}

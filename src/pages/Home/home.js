@@ -1,27 +1,32 @@
 import React, { useEffect, useState, useContext } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
-import { Navbar, Card, Button } from "react-bootstrap";
 import AppContext from "../../context/AppContext";
-import FloatingLabel from "../../components/FloatingLabel/FloatingLabel";
 import "./home.css";
 import ImageCards from "../../components/ImageCards/ImageCards";
 
 export const Home = () => {
   const [loading, setLoading] = useState(true);
+
   const [data, setData] = useState({});
 
   const appContext = useContext(AppContext);
   const { listAllPosts, post, setPost, createPost } = appContext;
 
+  async function fetchData() {
+    const results = await listAllPosts();
+    setData(results.data);
+    setLoading(false);
+  }
   useEffect(() => {
-    async function fetchData() {
-      const results = await listAllPosts();
-      setData(results.data);
-      setLoading(false);
-    }
-
+    setLoading(true);
     fetchData();
   }, []);
+
+  async function callApi() {
+    setLoading(true);
+    await createPost();
+    fetchData();
+  }
 
   const handleInput = (input) => (e) => {
     setPost((obj) => ({ ...obj, [input]: e.target.value }));
@@ -36,44 +41,65 @@ export const Home = () => {
       {loading ? (
         <>
           <div className="loading-content">
-            <ClipLoader size={150} color={"#17a2b8"} loading={loading} />
+            <ClipLoader size={150} color={"#fff"} loading={loading} />
           </div>
         </>
       ) : (
         <>
-          <div className="upload">
-            <Card className="p-3 mt-3 text-center login-border">
-              <FloatingLabel
-                type="text"
-                name="title"
-                placeholder="Title"
-                value={post.title}
-                onChangeText={handleInput("title")}
-                isActive={post.title.length > 0 ? true : false}
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1.0"
               />
-              <FloatingLabel
-                type="text"
-                name="description"
-                placeholder="Description"
-                value={post.description}
-                onChangeText={handleInput("description")}
-                isActive={post.description.length > 0 ? true : false}
-              />
+              <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+              <title>Document</title>
+              <link rel="stylesheet" href="style.css" />
+            </head>
+            <body>
+              <section class="form-section">
+                <div class="form-wrapper">
+                  <form>
+                    <div class="input-block">
+                      <label for="login-email">Title</label>
+                      <input
+                        type="text"
+                        id="login-email"
+                        onChange={handleInput("title")}
+                      />
+                    </div>
+                    <div class="input-block">
+                      <label for="login-password">Description</label>
+                      <input
+                        type="text"
+                        id="login-password"
+                        onChange={handleInput("description")}
+                      />
+                    </div>
+                    <div class="input-block">
+                      <label for="login-email">File</label>
 
-              <div>
-                <input type="file" onChange={handleFileInput("file")} />
-              </div>
-              <Button
-                variant="info"
-                onClick={createPost}
-                style={{ width: "100%", "margin-top": "10px" }}
-              >
-                Enviar
-              </Button>
-            </Card>
-          </div>
-
-          <ImageCards data={data} />
+                      <input type="file" onChange={handleFileInput("file")} />
+                    </div>
+                    <button
+                      type="submit"
+                      class="btn-login"
+                      disabled={
+                        post.title && post.description && post.file
+                          ? false
+                          : true
+                      }
+                      onClick={callApi}
+                    >
+                      Send
+                    </button>
+                  </form>
+                </div>
+                <ImageCards data={data} />
+              </section>
+            </body>
+          </html>
         </>
       )}
     </>

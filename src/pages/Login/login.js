@@ -1,24 +1,23 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import AppContext from "../../context/AppContext";
 import { Button, Card } from "react-bootstrap";
 import FloatingLabel from "../../components/FloatingLabel/FloatingLabel";
 import { useHistory } from "react-router-dom";
 import "./login.css";
-import { Link } from "react-router-dom";
+
 export const Login = () => {
   const appContext = useContext(AppContext);
   const { login, setLogin, postLogin } = appContext;
+
   const handleInput = (input) => (e) => {
     setLogin((obj) => ({ ...obj, [input]: e.target.value }));
   };
   const history = useHistory();
-  function goBack() {
-    history.push("/recent");
-  }
 
   const callApi = async () => {
     const results = await postLogin();
     if (results === true) {
+      setLogin({ email: null, password: null });
       history.push("/home");
     }
   };
@@ -30,20 +29,29 @@ export const Login = () => {
           <FloatingLabel
             type="text"
             name="email"
-            placeholder="Usuário"
+            placeholder="Email"
             value={login.email}
             onChangeText={handleInput("email")}
-            isActive={login.email.length > 0 ? true : false}
+            isActive={login.email ? true : false}
           />
           <FloatingLabel
             type="password"
             name="password"
-            placeholder="Senha"
+            placeholder="Password"
             value={login.password}
             onChangeText={handleInput("password")}
-            isActive={login.password.length > 0 ? true : false}
+            isActive={login.password ? true : false}
           />
-          <Button variant="info" onClick={callApi} style={{ width: "100%" }}>
+          <Button
+            onClick={callApi}
+            style={{
+              marginTop: "20px",
+              width: "100%",
+              backgroundColor: "#7159c1",
+              boxShadow: "0 0 0 0.25rem #7159c1",
+              border: "0px solid",
+            }}
+          >
             Enviar
           </Button>
         </Card>

@@ -3,7 +3,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
-  background: #7159c1;
+  background: #484d50;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -95,79 +95,11 @@ table {
   border: 1px solid #f86440;
 }
 
-.loading-screen {
+.loading-content {
   text-align: center;
-  background-color: #17a2b8;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100vh;
-}
-
-.loading-content {
-  text-align: center;
-  background-color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 50vh;
-}
-
-.back-button {
-  margin-top: 10px;
-  margin-left: 30px;
-  display: inline-block;
-  width: 70px;
-  height: 70px;
-  background-color: #8e99a4;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-
-.back-button:hover {
-  background-color: white;
-  color: #8e99a4;
-  border: 1px solid #8e99a4;
-}
-
-.label-new-consult {
-  margin-left: 10px;
-}
-
-.no-content-label {
-  width: 100%;
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  font-size: 45px;
-  font-family: roboto, arial, helvet;
-  color: #787878;
-  font-weight: 700;
-}
-
-.container-agentes {
-  height: 70vh;
-  overflow: hidden;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-.home,
-.reports,
-.products {
-  display: flex;
-  height: 90vh;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
 }

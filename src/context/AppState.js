@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import AppContext from "./AppContext";
-import { useHistory } from "react-router-dom";
 
 const AppState = (props) => {
   const baseUrl = "http://localhost:3333";
 
-  const [login, setLogin] = useState({ email: "", password: "" });
-  const [headers, setHeaders] = useState({
-    Authorization: "",
-  });
+  const [login, setLogin] = useState({ email: null, password: null });
 
-  const [post, setPost] = useState({ file: {}, title: "", description: "" });
+  const [post, setPost] = useState({});
 
   const postLogin = async () => {
     try {
@@ -26,12 +22,9 @@ const AppState = (props) => {
       });
       const { token } = response.data;
       sessionStorage.setItem("token", token);
-      setHeaders({
-        Authorization: "Bearer " + token,
-      });
       return true;
     } catch (err) {
-      setLogin({ email: "", password: "" });
+      setLogin({});
       alert("Usuário ou senha inválidos");
       return false;
     }
@@ -39,7 +32,9 @@ const AppState = (props) => {
 
   const listAllPosts = async () => {
     const results = await axios.get(`${baseUrl}/posts`, {
-      headers: headers,
+      headers: {
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
     });
     return results;
   };
@@ -49,10 +44,11 @@ const AppState = (props) => {
     fd.append("title", post.title);
     fd.append("description", post.description);
     fd.append("file", post.file);
-    const multiPartHeader = headers;
-    multiPartHeader["content-type"] = "'Content-Type: multipart/form-data";
     const results = await axios.post(`${baseUrl}/posts`, fd, {
-      headers: multiPartHeader,
+      headers: {
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+        "Content-Type": "multipart/form-data",
+      },
     });
     return results;
   };
