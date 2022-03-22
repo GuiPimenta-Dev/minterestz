@@ -107,7 +107,7 @@ export const Home = () => {
                   </form>
                 </div>
 
-                <h3>API pitcures</h3>
+                <h3>Cards</h3>
                 <p>Check our database cards.</p>
 
                 <div className="imageCardsLine">
