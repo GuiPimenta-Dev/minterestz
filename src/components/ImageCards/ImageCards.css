@@ -1,54 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap");
+
+@font-face {
+  font-family: "made";
+  src: url(made_outer_sans.otf/MADE\ Outer\ Sans\ Light\ PERSONAL\ USE.otf);
+}
+@font-face {
+  font-family: "made title";
+  src: url(made_outer_sans.otf/MADE\ Outer\ Sans\ Black\ PERSONAL\ USE.otf);
+}
+
+@font-face {
+  font-family: "made nft";
+  src: url(made_outer_sans.otf/MADE\ Outer\ Sans\ Light\ PERSONAL\ USE.otf);
+}
 .mainContainer {
-  margin: 10% 20px;
+  margin: 30px 80px;
+
   display: flex;
-  gap: 15px;
   flex-wrap: wrap;
+  gap: 40px;
 }
 
-.cardPhoto {
-  padding: 10px;
-  min-height: 400px;
-  max-height: 400px;
-  width: 200px;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  transition: all 500ms ease;
-  justify-content: space-between;
-  overflow: hidden;
-  background-color: rgb(228, 227, 227);
-  border-radius: 10px;
+.cardContainer {
+  position: relative;
+  height: 300px;
   border: none;
-}
-
-.cardPhoto:hover {
-  background-color: white;
-}
-
-.cardPhoto:hover .cardImg {
-  transform: scale(1.05);
-}
-
-.cardImgContainer {
-  height: 80%;
+  border-radius: 8px;
+  transition: all 0.5s;
+  cursor: pointer;
+  outline: none;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
+}
+
+.cardContainer:hover {
+  transform: scale(1.1);
+  outline: none;
+}
+.cardContainer:hover .cardImg {
+  opacity: 0.8;
+}
+
+.cardContainer:hover:after {
+  content: "";
+  width: 100%;
+  height: 50px;
+  padding-bottom: 100px;
+
+  transform: translateY(-100px);
+  background: rgb(161, 87, 217);
+  background: linear-gradient(
+    0deg,
+    rgba(161, 87, 217, 1) 0%,
+    rgba(140, 88, 255, 0) 100%
+  );
 }
 
 .cardImg {
-  opacity: 1;
-  transition: all 300ms ease;
+  transition: opacity 0.3s;
   height: 100%;
 }
 
-.cardTitle {
-  text-align: center;
-  text-transform: capitalize;
-  font-size: 30px;
-  font-weight: 600;
+.cardBody {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, 30%);
+  transition: all 0.5s;
+  opacity: 0;
 }
+
+.cardTitle {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+  color: white;
+  font-family: made title;
+  font-weight: bold;
+  text-shadow: -0.8px 0 black, 0 0.8px black, 0.8px 0 black, 0 -0.8px black;
+}
+
 .cardDescription {
   text-transform: capitalize;
-  font-size: 20px;
+  text-align: center;
+  font-family: made;
+  color: white;
+  font-weight: 800;
+  max-height: 100px;
+  width: 200px;
+  overflow: hidden;
+  font-size: 18px;
+  text-shadow: -0.3px 0 black, 0 0.3px black, 0.3px 0 black, 0 -0.3px black;
+}
+
+.card:hover .cardBody {
+  transform: translate(-50%, 5%);
+  opacity: 1;
+  z-index: 2;
+}
+
+.icons {
+  position: absolute;
+  font-size: 25px;
+  top: -170px;
+  right: 15px;
+  font-weight: bold;
+  color: rgb(250, 161, 161);
+  opacity: 0.5;
+  transition: 0.3s;
+}
+.edit {
+  margin-left: 5px;
+}
+.trash:hover {
+  opacity: 1;
+  color: red;
+}
+.edit:hover {
+  opacity: 1;
+  color: blue;
 }

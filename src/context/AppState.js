@@ -39,6 +39,14 @@ const AppState = (props) => {
     return results;
   };
 
+  const deletePost = async (id) => {
+    await axios.delete(`${baseUrl}/posts/${id}`, {
+      headers: {
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+    });
+  };
+
   const createPost = async () => {
     const fd = new FormData();
     fd.append("title", post.title);
@@ -63,6 +71,7 @@ const AppState = (props) => {
         postLogin,
         listAllPosts,
         createPost,
+        deletePost,
       }}
     >
       {props.children}

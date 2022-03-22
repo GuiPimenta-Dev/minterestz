@@ -17,15 +17,17 @@ export const Login = () => {
   const callApi = async () => {
     const results = await postLogin();
     if (results === true) {
-      setLogin({ email: null, password: null });
       history.push("/home");
     }
   };
 
   return (
     <>
+      <h1>minterestz</h1>
+
       <div className="login-container">
-        <Card className="p-3 mt-3 text-center login-border">
+        <Card className="login">
+          <h2>LOGIN</h2>
           <FloatingLabel
             type="text"
             name="email"
@@ -42,16 +44,7 @@ export const Login = () => {
             onChangeText={handleInput("password")}
             isActive={login.password ? true : false}
           />
-          <Button
-            onClick={callApi}
-            style={{
-              marginTop: "20px",
-              width: "100%",
-              backgroundColor: "#7159c1",
-              boxShadow: "0 0 0 0.25rem #7159c1",
-              border: "0px solid",
-            }}
-          >
+          <Button className="btnLog" onClick={callApi}>
             Enviar
           </Button>
         </Card>

@@ -58,29 +58,39 @@ export const Home = () => {
               <link rel="stylesheet" href="style.css" />
             </head>
             <body>
+              <header>
+                <h1>minterestz</h1>
+                <p>Upload a card to our database.</p>
+              </header>
               <section class="form-section">
                 <div class="form-wrapper">
                   <form>
                     <div class="input-block">
-                      <label for="login-email">Title</label>
+                      <label for="login-email">Title:</label>
                       <input
                         type="text"
-                        id="login-email"
+                        id="title"
                         onChange={handleInput("title")}
                       />
                     </div>
+
                     <div class="input-block">
-                      <label for="login-password">Description</label>
+                      <label for="login-password">Description:</label>
                       <input
                         type="text"
-                        id="login-password"
+                        id="description"
                         onChange={handleInput("description")}
                       />
                     </div>
                     <div class="input-block">
-                      <label for="login-email">File</label>
+                      <label for="login-email">File:</label>
 
-                      <input type="file" onChange={handleFileInput("file")} />
+                      <input
+                        type="file"
+                        id="fileInput"
+                        className="inputFile"
+                        onChange={handleFileInput("file")}
+                      />
                     </div>
                     <button
                       type="submit"
@@ -96,7 +106,17 @@ export const Home = () => {
                     </button>
                   </form>
                 </div>
-                <ImageCards data={data} />
+
+                <h3>API pitcures</h3>
+                <p>Check our database cards.</p>
+
+                <div className="imageCardsLine">
+                  <ImageCards
+                    data={data}
+                    setLoading={setLoading}
+                    fetchData={fetchData}
+                  />
+                </div>
               </section>
             </body>
           </html>

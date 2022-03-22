@@ -1,10 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
-
+@font-face {
+  font-family: "made";
+  src: url(made_outer_sans.otf/MADE\ Outer\ Sans\ Light\ PERSONAL\ USE.otf);
+}
 .login-container {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  right: 25%;
+  transform: translate(50%, 50%);
 }
 
 * {
@@ -18,4 +20,45 @@
 .login-border {
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+}
+
+h1 {
+  margin-top: 50px;
+  font-family: made title;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 80px;
+  letter-spacing: 10px;
+}
+
+.login {
+  background-color: #8c58ff;
+  padding: 30px 15px;
+  outline: none;
+}
+
+h2 {
+  text-align: center;
+  font-family: made;
+  font-weight: bold;
+  color: white;
+}
+
+.btnLog {
+  display: block;
+  width: 120px;
+  border: none;
+  background-color: #52418a;
+  color: white;
+  border-radius: 25px;
+  margin: 15px auto;
+  padding: 15px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.btnLog:hover {
+  width: 80%;
+  background-color: #52418a;
 }
