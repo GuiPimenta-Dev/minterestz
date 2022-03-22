@@ -3,7 +3,7 @@ import axios from "axios";
 import AppContext from "./AppContext";
 
 const AppState = (props) => {
-  const baseUrl = "https://mintdropz.herokuapp.com/signIn";
+  const baseUrl = "https://mintdropz.herokuapp.com";
 
   const [login, setLogin] = useState({ email: null, password: null });
 
