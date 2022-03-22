@@ -4,7 +4,7 @@ import AppContext from "./AppContext";
 
 const AppState = (props) => {
   const baseUrl =
-    "http://ec2-54-207-192-146.sa-east-1.compute.amazonaws.com:3334";
+    "https://ec2-54-207-192-146.sa-east-1.compute.amazonaws.com:3334";
 
   const [login, setLogin] = useState({ email: null, password: null });
 
